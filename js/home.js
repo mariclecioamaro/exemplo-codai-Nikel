@@ -153,7 +153,7 @@ function getTotal() {
     const transactions = data.transactions;
     let total = 0;
 
-    transactions.forEach(item => {
+    transactions.forEach((item) => {
         if (item.type === "1") {
             total += item.value;
         } else {

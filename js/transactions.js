@@ -70,13 +70,13 @@ function getTransactions(data) {
 
     if (transactions.length) {
         transactions.forEach((item) => {
-            let type = "1";
+            let type = "Entrada";
 
             if (item.type === "2") {
-                type = "2";
+                type = "Saída";
             }
 
-            transactions += `
+            transactionsHtml += `
             <tr>
                 <th scope="row">${item.date}</th>
                 <td>${item.value.toFixed(2)}</td>
