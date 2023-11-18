@@ -57,7 +57,11 @@ function checkLogged() {
     }
 
     getCashIn();
-    getCashOut();
+    if((getTotal + data.transactions) < 0){
+        alert("Saldo negativo"); 
+    }else{   
+        getCashOut();
+    }
     getTotal();
 
 }

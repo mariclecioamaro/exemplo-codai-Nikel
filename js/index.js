@@ -1,6 +1,10 @@
 const myModal = new bootstrap.Modal("#register-modal");
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("session");
+let password = document.getElementById('password-create-input1');
+let passwordCheck = document.getElementById('password-create-input2');
+
+passwordCheck.addEventListener('input', passwordVerif);
 
 checkLogged();
 
@@ -39,7 +43,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const email = document.getElementById("email-create-input").value;
-    const password = document.getElementById("password-create-input").value;
+    const password = document.getElementById("password-create-input1").value;
 
     if (email.length < 5) {
         alert("Preencha o campo com um e-mail válido.");
@@ -52,11 +56,13 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     }
 
 
-    saveAccount({
-        login: email,
-        password: password,
-        transactions: []
-    });
+    if(passwordVerif){
+        saveAccount({
+            login: email,
+            password: password,
+            transactions: []
+        });
+    }
 
     myModal.hide();
 
@@ -96,4 +102,15 @@ function getAccout(key) {
     }
 
     return "";
+}
+
+function passwordVerif() {
+    if (password.value != passwordCheck.value) {
+      passwordCheck.setCustomValidity("Senhas diferentes! Digite senhas iguais.");
+      passwordCheck.reportValidity();
+      return false;
+    } else {
+      passwordCheck.setCustomValidity("");
+      return true;
+    }
 }
