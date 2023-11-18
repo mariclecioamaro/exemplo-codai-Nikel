@@ -3,10 +3,18 @@
 }
 
 #app {
-    background: linear-gradient(120deg,  #ffffff 44.9%, #4c79d3 45%) no-repeat fixed;
+    background: linear-gradient(120deg, #ffffff 44.9%, #4c79d3 45%) no-repeat fixed;
 }
 
-header{
+#button-color {
+    border-radius: 10px;
+    background-color: #4e0070;
+    color: #ffffff;
+    width: 50%;
+    margin: 0 25%;
+}
+
+header {
     border-bottom: 1px solid #bebcbc;
     padding: 5px;
     background-color: #ffffff;
@@ -75,7 +83,8 @@ header{
     color: #4c79d3;
 }
 
-.button-login:hover, .button-default:hover {
+.button-login:hover,
+.button-default:hover {
     background-color: #4c79d3;
     color: #ffffff;
 }

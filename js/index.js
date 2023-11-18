@@ -51,6 +51,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
         return;
     }
 
+
     saveAccount({
         login: email,
         password: password,

@@ -28,7 +28,7 @@ document.getElementById("transaction-form").addEventListener("submit", function 
     e.target.reset();
     myModal.hide();
 
-    getTransactions();
+    getTransactions(data);
 
     alert("Lançamento adicionado com sucesso.");
 
@@ -47,13 +47,13 @@ function checkLogged() {
         return;
     }
 
-    const dataUser = localStorage.getItem("logged");
+    const dataUser = localStorage.getItem(logged);
 
     if (dataUser) {
         data = JSON.parse(dataUser);
     }
 
-    getTransactions();
+    getTransactions(data);
 
 }
 

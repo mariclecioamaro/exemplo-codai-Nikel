@@ -50,7 +50,7 @@ function checkLogged() {
         return;
     }
 
-    const dataUser = localStorage.getItem("logged");
+    const dataUser = localStorage.getItem(logged);
 
     if (dataUser) {
         data = JSON.parse(dataUser);
@@ -111,30 +111,30 @@ function getCashIn() {
 function getCashOut() {
     const transactions = data.transactions;
 
-    const cashOut = transactions.filter((item) => item.type == "2");
+    const cashIn = transactions.filter((item) => item.type === "2");
 
-    if (cashOut.length) {
-        let cashOutHtml = ``;
+    if (cashIn.length) {
+        let cashInHtml = ``;
         let limit = 0;
 
-        if (cashOut.length > 5) {
+        if (cashIn.length > 5) {
             limit = 5;
         } else {
-            limit = cashOut.length;
+            limit = cashIn.length;
         }
 
         for (let index = 0; index < limit; index++) {
-            cashOutHtml += `
+            cashInHtml += `
            <div class="row mb-4">
                 <div class="col-12">
-                    <h3 class="fs-2">${cashOut[index].value.toFixed(2)}</h3>
+                    <h3 class="fs-2">${cashIn[index].value.toFixed(2)}</h3>
                     <div class="Container p-0">
                         <div class="row">
                             <div class="col-12 col-md-8">
-                                <p>${cashOut[index].description}</p>
+                                <p>${cashIn[index].description}</p>
                             </div>
                             <div class="col-12 col-md-3 d-flex justify-content-end">
-                                ${cashOut[index].date}
+                                ${cashIn[index].date}
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ function getCashOut() {
            `
         }
 
-        document.getElementById("cash-out-list").innerHTML = cashOutHtml;
+        document.getElementById("cash-out-list").innerHTML = cashInHtml;
     }
 
 }
