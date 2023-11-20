@@ -28,7 +28,7 @@ document.getElementById("transaction-form").addEventListener("submit", function 
     const total = getTotal();
 
     if((type === "2") && (total < 0)){
-        alert("Antenção. Seu saldo será negativo após o cadastro da despesa. Deseja continuar? ");
+        alert("Atenção. Seu saldo será negativo após o cadastro da despesa. Deseja continuar? ");
     }
     saveData(data);
     e.target.reset();
