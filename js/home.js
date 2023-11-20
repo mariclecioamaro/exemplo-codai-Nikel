@@ -6,8 +6,6 @@ let data = {
     transactions: []
 };
 
-let saldo = 0.0;
-
 document.getElementById("button-logout").addEventListener("click", logout);
 document.getElementById("transactions-button").addEventListener("click", function () {
     window.location.href = "transactions.html";
@@ -34,7 +32,7 @@ document.getElementById("transaction-form").addEventListener("submit", function 
     getCashIn();
 
     getCashOut();
-    saldo = getTotal();
+    getTotal();
 
     alert("Lançamento adicionado com sucesso.");
 
@@ -61,7 +59,7 @@ function checkLogged() {
 
     getCashIn();
     getCashOut();
-    saldo = getTotal();
+    getTotal();
 }
 console.log(saldo);
 
@@ -79,7 +77,6 @@ function getCashIn() {
 
     if (cashIn.length) {
         let cashInHtml = ``;
-        let limit = 0;
 
         if (cashIn.length > 5) {
             limit = 5;
