@@ -6,6 +6,8 @@ let data = {
     transactions: []
 };
 
+let saldo = 0.0;
+
 document.getElementById("button-logout").addEventListener("click", logout);
 document.getElementById("transactions-button").addEventListener("click", function () {
     window.location.href = "transactions.html";
@@ -25,13 +27,14 @@ document.getElementById("transaction-form").addEventListener("submit", function 
         value: value, type: type, description: description, date: date
     });
 
+
     saveData(data);
     e.target.reset();
     myModal.hide();
-
     getCashIn();
+
     getCashOut();
-    getTotal();
+    saldo = getTotal();
 
     alert("Lançamento adicionado com sucesso.");
 
@@ -57,14 +60,10 @@ function checkLogged() {
     }
 
     getCashIn();
-    if((getTotal + data.transactions) < 0){
-        alert("Saldo negativo"); 
-    }else{   
-        getCashOut();
-    }
-    getTotal();
-
+    getCashOut();
+    saldo = getTotal();
 }
+console.log(saldo);
 
 function logout() {
     sessionStorage.removeItem("logged");
@@ -146,7 +145,6 @@ function getCashOut() {
             </div>
            `
         }
-
         document.getElementById("cash-out-list").innerHTML = cashInHtml;
     }
 
@@ -155,6 +153,7 @@ function getCashOut() {
 function getTotal() {
     const transactions = data.transactions;
     let total = 0;
+    let saldo = 0;
 
     transactions.forEach((item) => {
         if (item.type === "1") {
@@ -162,7 +161,10 @@ function getTotal() {
         } else {
             total -= item.value;
         }
+        saldo = total;
     });
+
+    console.log(saldo);
 
     document.getElementById("total").innerHTML = `R$ ${total.toFixed(2)}`;
 }
