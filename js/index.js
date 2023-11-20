@@ -4,6 +4,12 @@ const session = localStorage.getItem("session");
 let password = document.getElementById('password-create-input1');
 let passwordCheck = document.getElementById('password-create-input2');
 
+function colorBack() {
+    document.getElementById("color-back");
+
+    document.body.style.background = "linear-gradient(120deg, #ffa500 44.9%, #ffffff 45%) no-repeat fixed";
+};
+
 passwordCheck.addEventListener('input', passwordVerif);
 
 checkLogged();
@@ -56,7 +62,7 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
     }
 
 
-    if(passwordVerif){
+    if (passwordVerif) {
         saveAccount({
             login: email,
             password: password,
@@ -106,11 +112,11 @@ function getAccout(key) {
 
 function passwordVerif() {
     if (password.value != passwordCheck.value) {
-      passwordCheck.setCustomValidity("Senhas diferentes! Digite senhas iguais.");
-      passwordCheck.reportValidity();
-      return false;
+        passwordCheck.setCustomValidity("Senhas diferentes! Digite senhas iguais.");
+        passwordCheck.reportValidity();
+        return false;
     } else {
-      passwordCheck.setCustomValidity("");
-      return true;
+        passwordCheck.setCustomValidity("");
+        return true;
     }
 }

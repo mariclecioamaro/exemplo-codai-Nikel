@@ -25,12 +25,16 @@ document.getElementById("transaction-form").addEventListener("submit", function 
         value: value, type: type, description: description, date: date
     });
 
+    const total = getTotal();
 
+    if((type === "2") && (total < 0)){
+        alert("Antenção. Seu saldo será negativo após o cadastro da despesa. Deseja continuar? ");
+    }
     saveData(data);
     e.target.reset();
     myModal.hide();
-    getCashIn();
 
+    getCashIn();
     getCashOut();
     getTotal();
 
@@ -161,9 +165,9 @@ function getTotal() {
         saldo = total;
     });
 
-    console.log(saldo);
-
     document.getElementById("total").innerHTML = `R$ ${total.toFixed(2)}`;
+
+    return saldo;
 }
 
 function saveData(data) {
